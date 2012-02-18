@@ -45,13 +45,13 @@ object MyBuild extends Build {
 
   lazy val sub1 = Project(id("sub1"), file("sub1"),
     settings = defaultSettings ++ Seq(
-      libraryDependencies := Dependency.logging ++ Dependency.test
+      libraryDependencies := Dependency.basic ++ Dependency.logging ++ Dependency.test
     )
   )
 
   lazy val sub2 = Project(id("sub2"), file("sub2"),
     settings = defaultSettings ++ Seq(
-      libraryDependencies := Dependency.logging ++ Dependency.test
+      libraryDependencies := Dependency.basic ++ Dependency.logging ++ Dependency.test
     )
   ) dependsOn(sub1)
 }
