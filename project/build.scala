@@ -19,13 +19,15 @@ object MyBuild extends Build {
   )
 
   object Dependency {
-    val scalaIoVersion = "0.3.0"
 
-    val basic = Seq(
-      "com.github.scala-incubator.io" %% "scala-io-core" % scalaIoVersion,
-      "com.github.scala-incubator.io" %% "scala-io-file" % scalaIoVersion,
-      "org.scala-tools.time" %% "time" % "0.5"
-    )
+    val basic = {
+      val scalaIoVersion = "0.3.0"
+      Seq(
+        "com.github.scala-incubator.io" %% "scala-io-core" % scalaIoVersion,
+        "com.github.scala-incubator.io" %% "scala-io-file" % scalaIoVersion,
+        "org.scala-tools.time" %% "time" % "0.5"
+      )
+    }
 
     val logging = Seq(
       "ch.qos.logback" % "logback-classic" % "0.9.25",
@@ -35,24 +37,28 @@ object MyBuild extends Build {
     )
 
     val test = Seq(
-      "org.scalatest" %% "scalatest" % "1.6.1" % "test",
-      "org.scalamock" %% "scalamock-scalatest-support" % "latest.integration" % "test"
-    )
+      "org.scalatest" %% "scalatest" % "1.6.1",
+      "org.scalamock" %% "scalamock-scalatest-support" % "latest.integration"
+    ).map { _ % "test" }
+
+    val default = basic ++ logging ++ test
   }
 
   lazy val main = Project(groupName, file("."),
-    settings = defaultSettings
+    settings = defaultSettings ++ Seq(
+      libraryDependencies := Dependency.default
+    )
   ) aggregate(sub1, sub2)
 
   lazy val sub1 = Project(id("sub1"), file("sub1"),
     settings = defaultSettings ++ Seq(
-      libraryDependencies := Dependency.basic ++ Dependency.logging ++ Dependency.test
+      libraryDependencies := Dependency.default
     )
   )
 
   lazy val sub2 = Project(id("sub2"), file("sub2"),
     settings = defaultSettings ++ Seq(
-      libraryDependencies := Dependency.basic ++ Dependency.logging ++ Dependency.test
+      libraryDependencies := Dependency.default
     )
   ) dependsOn(sub1)
 }
