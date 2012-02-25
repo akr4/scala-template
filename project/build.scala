@@ -46,7 +46,12 @@ object MyBuild extends Build {
 
   lazy val main = Project(groupName, file("."),
     settings = defaultSettings ++ Seq(
-      libraryDependencies := Dependency.default
+      libraryDependencies := Dependency.default,
+      initialCommands := """
+          |import scalax.io._
+          |import scalax.file._
+          |import org.scala_tools.time.Imports._
+        """.stripMargin
     )
   ) aggregate(sub1, sub2)
 
