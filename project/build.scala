@@ -14,7 +14,8 @@ object MyBuild extends Build {
     version := "0.1",
     organization := "net.physalis",
     crossScalaVersions := Seq("2.9.0", "2.9.0-1", "2.9.1"),
-    scalaVersion := "2.9.1"
+    scalaVersion := "2.9.1",
+    scalacOptions ++= Seq("-unchecked", "-deprecation")
     //resolvers += "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
   )
 
