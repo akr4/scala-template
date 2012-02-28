@@ -22,10 +22,10 @@ object MyBuild extends Build {
   object Dependency {
 
     val basic = {
-      val scalaIoVersion = "0.3.0"
+      val version = "0.3.0"
       Seq(
-        "com.github.scala-incubator.io" %% "scala-io-core" % scalaIoVersion,
-        "com.github.scala-incubator.io" %% "scala-io-file" % scalaIoVersion,
+        "com.github.scala-incubator.io" %% "scala-io-core" % version,
+        "com.github.scala-incubator.io" %% "scala-io-file" % version,
         "org.scala-tools.time" %% "time" % "0.5"
       )
     }
