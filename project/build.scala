@@ -22,11 +22,16 @@ object MyBuild extends Build {
   object Dependency {
 
     val basic = {
+      Seq(
+        "org.scala-tools.time" %% "time" % "0.5"
+      )
+    }
+
+    val io = {
       val version = "0.3.0"
       Seq(
         "com.github.scala-incubator.io" %% "scala-io-core" % version,
-        "com.github.scala-incubator.io" %% "scala-io-file" % version,
-        "org.scala-tools.time" %% "time" % "0.5"
+        "com.github.scala-incubator.io" %% "scala-io-file" % version
       )
     }
 
@@ -42,7 +47,20 @@ object MyBuild extends Build {
       "org.scalamock" %% "scalamock-scalatest-support" % "latest.integration"
     ).map { _ % "test" }
 
-    val default = basic ++ logging ++ test
+    val unfiltered = {
+      val version = "0.6.1"
+      Seq(
+        "net.databinder" %% "unfiltered-filter" % version,
+        "net.databinder" %% "unfiltered-jetty" % version
+      )
+    }
+
+    val scalaQuery = Seq(
+      "org.scalaquery" % "scalaquery_2.9.0-1" % "0.9.5",
+      "com.h2database" % "h2" % "1.3.157"
+    )
+
+    val default = basic ++ io ++ logging ++ test
   }
 
   lazy val main = Project(groupName, file("."),
