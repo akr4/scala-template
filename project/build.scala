@@ -16,14 +16,14 @@ object MyBuild extends Build {
     crossScalaVersions := Seq("2.9.0", "2.9.0-1", "2.9.1"),
     scalaVersion := "2.9.1",
     scalacOptions ++= Seq("-unchecked", "-deprecation")
-    //resolvers += "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
   )
 
   object Dependency {
 
     val basic = {
       Seq(
-        "org.scala-tools.time" %% "time" % "0.5"
+        "org.scala-tools.time" %% "time" % "0.5",
+        "org.clapper" %% "argot" % "0.3.8"
       )
     }
 
