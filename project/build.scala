@@ -36,7 +36,7 @@ object MyBuild extends Build {
     }
 
     val logging = Seq(
-      "ch.qos.logback" % "logback-classic" % "1.0.1"
+      "ch.qos.logback" % "logback-classic" % "1.0.1",
       "org.codehaus.groovy" % "groovy" % "1.8.6",
       "org.slf4j" % "slf4j-api" % "1.6.4",
       "org.clapper" %% "grizzled-slf4j" % "0.6.8"
@@ -71,7 +71,7 @@ object MyBuild extends Build {
           |import scalax.file._
           |import org.scala_tools.time.Imports._
         """.stripMargin
-    )
+    ) ++ com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings
   ) aggregate(sub1, sub2)
 
   lazy val sub1 = Project(id("sub1"), file("sub1"),
