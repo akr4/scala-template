@@ -7,7 +7,7 @@ object MyBuild extends Build {
 
   def id(name: String) = "%s-%s" format(groupName, name)
 
-  override val settings = super.settings :+ 
+  override val settings = super.settings :+
     (shellPrompt := { s => Project.extract(s).currentProject.id + "> " })
 
   val defaultSettings = Defaults.defaultSettings ++ Seq(
@@ -15,7 +15,10 @@ object MyBuild extends Build {
     organization := "net.physalis",
     crossScalaVersions := Seq("2.9.0", "2.9.0-1", "2.9.1"),
     scalaVersion := "2.9.1",
-    scalacOptions ++= Seq("-unchecked", "-deprecation")
+    scalacOptions ++= Seq("-unchecked", "-deprecation"),
+    resolvers ++= Seq(
+      "typesafe" at "http://repo.typesafe.com/typesafe/releases/"
+    )
   )
 
   object Dependency {
