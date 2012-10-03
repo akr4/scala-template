@@ -17,7 +17,8 @@ object MyBuild extends Build {
     scalaVersion := "2.9.1",
     scalacOptions ++= Seq("-unchecked", "-deprecation"),
     resolvers ++= Seq(
-      "typesafe" at "http://repo.typesafe.com/typesafe/releases/"
+      "typesafe" at "http://repo.typesafe.com/typesafe/releases/",
+      "sonatype-public" at "https://oss.sonatype.org/content/groups/public"
     )
   )
 
@@ -26,12 +27,12 @@ object MyBuild extends Build {
     val basic = {
       Seq(
         "org.scala-tools.time" %% "time" % "0.5",
-        "org.clapper" %% "argot" % "0.3.8"
+        "com.github.scopt" %% "scopt" % "2.1.0"
       )
     }
 
     val io = {
-      val version = "0.3.0"
+      val version = "0.4.1"
       Seq(
         "com.github.scala-incubator.io" %% "scala-io-core" % version,
         "com.github.scala-incubator.io" %% "scala-io-file" % version
@@ -74,7 +75,7 @@ object MyBuild extends Build {
           |import scalax.file._
           |import org.scala_tools.time.Imports._
         """.stripMargin
-    ) ++ com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings
+    )
   ) aggregate(sub1, sub2)
 
   lazy val sub1 = Project(id("sub1"), file("sub1"),
