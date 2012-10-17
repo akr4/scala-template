@@ -64,6 +64,10 @@ object MyBuild extends Build {
       "com.h2database" % "h2" % "1.3.157"
     )
 
+    val dispatch = Seq(
+      "net.databinder.dispatch" %% "dispatch-core" % "0.9.2"
+    )
+
     val default = basic ++ io ++ logging ++ test
   }
 
