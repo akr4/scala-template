@@ -13,8 +13,8 @@ object MyBuild extends Build {
   val defaultSettings = Defaults.defaultSettings ++ Seq(
     version := "0.1",
     organization := "net.physalis",
-    crossScalaVersions := Seq("2.9.0", "2.9.0-1", "2.9.1"),
-    scalaVersion := "2.9.1",
+    crossScalaVersions := Seq("2.9.2"),
+    scalaVersion := "2.9.2",
     scalacOptions ++= Seq("-unchecked", "-deprecation"),
     resolvers ++= Seq(
       "typesafe" at "http://repo.typesafe.com/typesafe/releases/",
@@ -26,7 +26,7 @@ object MyBuild extends Build {
 
     val basic = {
       Seq(
-        "org.scala-tools.time" %% "time" % "0.5",
+        "org.scalaj" %% "scalaj-time" % "0.6",
         "com.github.scopt" %% "scopt" % "2.1.0"
       )
     }
@@ -43,7 +43,7 @@ object MyBuild extends Build {
       "ch.qos.logback" % "logback-classic" % "1.0.1",
       "org.codehaus.groovy" % "groovy" % "1.8.6",
       "org.slf4j" % "slf4j-api" % "1.6.4",
-      "org.clapper" %% "grizzled-slf4j" % "0.6.8"
+      "org.clapper" %% "grizzled-slf4j" % "0.6.10"
     )
 
     val test = Seq(
@@ -66,6 +66,10 @@ object MyBuild extends Build {
 
     val dispatch = Seq(
       "net.databinder.dispatch" %% "dispatch-core" % "0.9.2"
+    )
+
+    val liftJson = Seq(
+      "net.liftweb" % "lift-json_2.9.1" % "2.4"
     )
 
     val default = basic ++ io ++ logging ++ test
