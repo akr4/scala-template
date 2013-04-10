@@ -81,7 +81,7 @@ object MyBuild extends Build {
       initialCommands := """
           |import scalax.io._
           |import scalax.file._
-          |import org.scala_tools.time.Imports._
+          |import com.github.nscala_time.time.Imports._
         """.stripMargin
     )
   ) aggregate(sub1, sub2)
