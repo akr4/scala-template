@@ -26,7 +26,7 @@ object MyBuild extends Build {
 
     val basic = {
       Seq(
-        "org.scalaj" %% "scalaj-time" % "0.6",
+        "com.github.nscala-time" %% "nscala-time" % "0.4.0",
         "com.github.scopt" %% "scopt" % "2.1.0"
       )
     }
